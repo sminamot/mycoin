@@ -76,6 +76,8 @@ func (m MyCoins) message(wt bool) string {
 		ss = append(ss, fmt.Sprint(time.Now().Format(NOTIFY_TIME_FORMAT)))
 	}
 	totalYen := m.TotalYen()
+	ss = append(ss, fmt.Sprint("■total"))
+	ss = append(ss, fmt.Sprintf("yen: %.5f", totalYen))
 	for i, v := range m {
 		ss = append(ss, fmt.Sprint("■"+i))
 		ss = append(ss, fmt.Sprintf("total: %.5f", v.Total))
@@ -83,7 +85,5 @@ func (m MyCoins) message(wt bool) string {
 		ss = append(ss, fmt.Sprintf("rate: %.5f", v.Rate))
 		ss = append(ss, fmt.Sprintf("yen: %.5f", v.Yen))
 	}
-	ss = append(ss, fmt.Sprint("■total"))
-	ss = append(ss, fmt.Sprintf("yen: %.5f", totalYen))
 	return strings.Join(ss, "\n")
 }
